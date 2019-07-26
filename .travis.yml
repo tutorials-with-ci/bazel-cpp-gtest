@@ -10,5 +10,6 @@ before_install:
   - clang-format --version
 
 script:
-  - find . -name "*.h" -o -name "*.cpp" -exec clang-format -style=file -output-replacements-xml {} \;
+  - find . -name "*.h" -o -name "*.cpp" -exec clang-format -i {} \;
+  - git diff --exit-code
   - bazel test //...
